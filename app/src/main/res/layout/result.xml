@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main"
+    tools:ignore="MergeRootFrame">
+
+
+
+    <fragment
+        android:id="@+id/adFragment"
+        android:name="com.jaymcd.secretsanta.result$AdFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        tools:layout="@layout/fragment_ad" />
+
+    <fragment android:name="com.jaymcd.secretsanta.result$PlaceholderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/adFragment"
+        tools:layout="@layout/fragment_main"
+        android:id="@+id/settings" />
+
+
+</RelativeLayout>
