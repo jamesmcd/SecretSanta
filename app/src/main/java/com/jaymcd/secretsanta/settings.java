@@ -53,6 +53,7 @@ public class settings extends ActionBarActivity {
         title.setTypeface(face);
         addText = (EditText)findViewById(R.id.edAdd);
         addButton = (Button)findViewById(R.id.btnAdd);
+        addButton.setTypeface(face);
         addButton.setOnClickListener(new addListener());
 
         c = this;

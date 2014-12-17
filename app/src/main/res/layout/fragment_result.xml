@@ -23,8 +23,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/receiver"
         android:id="@+id/txtTitle"
-        android:textSize="30sp"
-        android:textColor="#ffff000a"
+        android:textSize="35sp"
+        android:textColor="#ff000000"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 

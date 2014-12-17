@@ -51,6 +51,7 @@ public class Main extends ActionBarActivity {
         TextView title = (TextView) findViewById(R.id.txtTitle);
         TextView noSantas = (TextView) findViewById(R.id.txtNoSanta);
         title.setTypeface(face);
+        noSantas.setTypeface(face);
         if (!names.isEmpty()) {
             noSantas.setText("");
 

@@ -20,17 +20,22 @@
         android:maxLines="1"
         android:textCursorDrawable="@drawable/cursor"
         android:textColor="#ffff001a"
-        android:background="@drawable/box" />
+        android:background="@drawable/box"
+        android:maxLength="30" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:text="@string/add"
         android:id="@+id/btnAdd"
         android:layout_alignBottom="@+id/edAdd"
         android:layout_toRightOf="@+id/edAdd"
         android:layout_toEndOf="@+id/edAdd"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:textColor="#ffff0016"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +48,8 @@
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffff0008" />
+        android:textColor="#ff000000"
+        android:textSize="35sp" />
 
     <ListView
         android:layout_width="match_parent"
@@ -55,6 +61,8 @@
         android:choiceMode="none"
         android:clickable="false"
         android:layout_marginTop="10dp"
+        android:scrollbarThumbVertical="@drawable/santascroller"
+        android:fadeScrollbars="false"
         android:layout_above="@+id/imageView4" />
 
     <ImageView
