@@ -13,8 +13,8 @@
     <string name="addsanta">Add Santas</string>
     <string name="clear">Clear</string>
     <string name="save">Save</string>
-    <string name="title">Select your name:</string>
-    <string name="noSantas">No Santas added.\nPlease open settings menu.</string>
-    <string name="receiver">Your Receiver</string>
+    <string name="title">Santa\'s name?</string>
+    <string name="noSantas">Add Santa in Settings Menu</string>
+    <string name="receiver">You got...</string>
 
 </resources>

@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.jaymcd.secretsanta.settings$PlaceholderFragment">
+    tools:context="com.jaymcd.secretsanta.settings$PlaceholderFragment"
+    android:background="#ffffffff">
 
     <EditText
         android:layout_width="150dp"
@@ -16,7 +17,8 @@
         android:layout_alignParentRight="false"
         android:layout_centerHorizontal="true"
         android:singleLine="true"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:textColor="#ffff001a" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,7 +40,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffff0008" />
 
     <ListView
         android:layout_width="match_parent"
@@ -49,7 +52,16 @@
         android:layout_alignParentEnd="false"
         android:choiceMode="none"
         android:clickable="false"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_above="@+id/imageView4" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/santasack" />
+
 
 </RelativeLayout>

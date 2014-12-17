@@ -4,13 +4,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.jaymcd.secretsanta.result$PlaceholderFragment">
+    tools:context="com.jaymcd.secretsanta.result$PlaceholderFragment"
+    android:background="#ffffffff">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:id="@+id/txtSecret" />
+        android:textSize="40sp"
+        android:id="@+id/txtSecret"
+        android:textAlignment="center"
+        android:textColor="#ffff001c"
+        android:layout_below="@+id/txtTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,8 +23,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/receiver"
         android:id="@+id/txtTitle"
+        android:textSize="30sp"
+        android:textColor="#ffff000a"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp" />
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/santa"
+        android:layout_below="@+id/txtSecret"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>

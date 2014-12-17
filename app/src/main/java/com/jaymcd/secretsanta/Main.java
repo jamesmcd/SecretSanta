@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,19 +90,6 @@ public class Main extends ActionBarActivity {
             title.setText("");
         }//if there are users in the list hide instruction
 
-
-    }
-
-    private class goListener implements View.OnClickListener {
-        public void onClick(View v) {
-
-            String uName = ((Button) v).getText().toString();
-            Intent i = new Intent(getApplicationContext(), result.class);
-            i.putExtra("uName", uName);
-            startActivity(i);
-            finish();
-
-        }
 
     }
 

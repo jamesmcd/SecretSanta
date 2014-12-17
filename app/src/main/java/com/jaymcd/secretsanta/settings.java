@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,21 +21,24 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.view.View.OnKeyListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class settings extends ActionBarActivity {
     DB data;
     EditText addText;
+    Button addButton;
     ArrayList<String> names;
     ArrayList <Integer> getIDs;
     ListView list;
     String selected;
     Context c;
+    int [] IDs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +52,32 @@ public class settings extends ActionBarActivity {
         TextView title = (TextView)findViewById(R.id.txtAddSanta);
         title.setTypeface(face);
         addText = (EditText)findViewById(R.id.edAdd);
-        Button addButton = (Button)findViewById(R.id.btnAdd);
+        addButton = (Button)findViewById(R.id.btnAdd);
         addButton.setOnClickListener(new addListener());
+
         c = this;
+
+        addText.setOnKeyListener(new OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            String name = addText.getText().toString();
+                            addName(name);
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
         data.open();
         names = data.getNames();
         getIDs= data.getIDs();
@@ -90,7 +117,6 @@ public class settings extends ActionBarActivity {
     }
 
 
-
     private class addListener implements View.OnClickListener {
         public void onClick(View v){
             String name = addText.getText().toString();
@@ -98,17 +124,22 @@ public class settings extends ActionBarActivity {
             Toast.makeText(getApplicationContext(),"Please enter a name", Toast.LENGTH_SHORT).show();
 
         }else {
-            data.open();
-            data.addName(name);
-            data.close();
-            names.add(addText.getText().toString());
-            CustomArrayAdapter my_adapter = new CustomArrayAdapter(getApplicationContext(), names);
-            list.setAdapter(my_adapter);
-            addText.setText("");
+          addName(name);
         }
         }
     }
 
+    private void addName(String name){
+
+        data.open();
+        data.addName(name);
+        data.close();
+        names.add(addText.getText().toString());
+        CustomArrayAdapter my_adapter = new CustomArrayAdapter(getApplicationContext(), names);
+        list.setAdapter(my_adapter);
+        addText.setText("");
+
+    }
 
 
     @Override
@@ -126,7 +157,7 @@ public class settings extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.back) {
+        if (id == R.id.save) {
             save();
         }else if (id == R.id.clear){
             data.open();
@@ -146,42 +177,44 @@ public class settings extends ActionBarActivity {
         data.open();
         getIDs= data.getIDs();
         data.close();
-        int length = getIDs.size();
-        getIDs = Rand(getIDs);
-        Log.i("IDS: ", getIDs.toString());
-        for(int i = 0; i<length; i++){
+        Log.i("ID BEFORE", getIDs.toString());
+        IDs = new int[getIDs.size()];
+        for (int i = 0; i<getIDs.size(); i++){
+            IDs[i]=getIDs.get(i);
+        }
+
+        if(getIDs.size() > 1) {
+            Log.i("SIZE",String.valueOf(getIDs.size()));
+            while (hasDuplicate()) {
+                shuffleList(getIDs);
+            }
+        }
+        for (int x = 0; x < getIDs.size(); x++) {
             data.open();
-            data.setSanta(i+1,getIDs.get(i));
+            data.setSanta(IDs[x], getIDs.get(x));
             data.close();
         }
 
-
+        Log.i("ID AFTER", getIDs.toString());
         Intent i = new Intent(getApplicationContext(),Main.class);
         startActivity(i);
         finish();
     }
 
     public void onBackPressed() {
-        goBack();
+        save();
     }
 
-    private void goBack() {
-       save();
-    }
-
-    private ArrayList<Integer> Rand (ArrayList<Integer> x){
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        for(int i = 0; i<x.size(); i++){
-            int y = i+1;
-            if(y<x.size()){
-            result.add(x.get(y));}
-            else{
-                result.add(x.get(0));
+    private boolean hasDuplicate(){
+        for (int i = 0; i < getIDs.size(); i++){
+            if(IDs[i] == getIDs.get(i)){
+                return true;
             }
         }
 
-        return result;
+        return false;
     }
+
 
     public static class PlaceholderFragment extends Fragment {
 
@@ -212,6 +245,23 @@ public class settings extends ActionBarActivity {
         }
     }
 
+
+    public static void shuffleList(ArrayList<Integer> a) {
+        Log.i("SHUFFLE: ","SHUFFLING");
+        int n = a.size();
+        Random random = new Random();
+        random.nextInt();
+        for (int i = 0; i < n; i++) {
+            int change = i + random.nextInt(n - i);
+            swap(a, i, change);
+        }
+    }
+
+    private static void swap(ArrayList<Integer> a, int i, int change) {
+        int helper = a.get(i);
+        a.set(i, a.get(change));
+        a.set(change, helper);
+    }
 
 
 }
