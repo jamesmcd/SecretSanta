@@ -9,7 +9,7 @@
 
     <EditText
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/edAdd"
         android:layout_below="@+id/txtAddSanta"
         android:layout_alignParentLeft="false"
@@ -18,7 +18,9 @@
         android:layout_centerHorizontal="true"
         android:singleLine="true"
         android:maxLines="1"
-        android:textColor="#ffff001a" />
+        android:textCursorDrawable="@drawable/cursor"
+        android:textColor="#ffff001a"
+        android:background="@drawable/box" />
 
     <Button
         android:layout_width="wrap_content"
