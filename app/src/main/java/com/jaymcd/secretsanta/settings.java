@@ -186,7 +186,7 @@ public class settings extends ActionBarActivity {
 
         if(getIDs.size() > 1) {
             Log.i("SIZE",String.valueOf(getIDs.size()));
-            while (hasDuplicate()) {
+            while (hasDuplicate()) { //Shuffles while there are duplicates
                 shuffleList(getIDs);
             }
         }
@@ -208,7 +208,7 @@ public class settings extends ActionBarActivity {
 
     private boolean hasDuplicate(){
         for (int i = 0; i < getIDs.size(); i++){
-            if(IDs[i] == getIDs.get(i)){
+            if(IDs[i] == getIDs.get(i)){ //if the shuffled array matches the original
                 return true;
             }
         }
@@ -247,6 +247,7 @@ public class settings extends ActionBarActivity {
     }
 
 
+    /* The code below uses the Fisher-Yates method of shuffling */
     public static void shuffleList(ArrayList<Integer> a) {
         Log.i("SHUFFLE: ","SHUFFLING");
         int n = a.size();
